@@ -39,7 +39,19 @@ test('Confirm Shipping ไม่สำเร็จ ไม่กรอก Shippin
         await page.goto('https://ui-sandbox-omega.vercel.app');
         await page.getByRole('link', { name: 'Shipping Form' }).click()
     });
+    
     await test.step('กดปุ่ม Confilm shiping' , async () => {
         await page.getByTestId('shipping-submit').click()
     });
+    
+    await test.step('ตรวจสอบข้อความ error' , async () => {
+        await expect(page.getByTestId('shipping-form-first-name-error')).toHaveText('First name is required.')
+        await expect(page.getByTestId('shipping-form-last-name-error')).toHaveText('Last name is required.')
+        await expect(page.getByTestId('shipping-form-phone-error')).toHaveText('Phone number is required.')
+        await expect(page.getByTestId('shipping-form-address-error')).toHaveText('Address is required.')
+        await expect(page.getByTestId('shipping-form-province-error')).toHaveText('Please select a province.')
+        await expect(page.getByTestId('shipping-form-district-error')).toHaveText('Please select a district.')
+        await expect(page.getByTestId('shipping-form-subdistrict-error')).toHaveText('Please select a subdistrict.')
+    });
+
 });
