@@ -20,9 +20,9 @@ test('Login สำเร็จ', async ({ page }) => {
         await page.keyboard.press('Enter');
       });
 
-
-
-
-
-
+      await test.step('ตรวจสอบ url และ ข้อความบนหน้าเว็บ' , async () => {
+        await expect(page).toHaveURL('https://ui-sandbox-omega.vercel.app/login/success');
+        await expect(page.getByTestId('success-heading')).toHaveText('Login successful')
+        await expect(page.getByTestId('signin-user-message')).toHaveText('You have signed in as user@company.com')
+      });
 });
