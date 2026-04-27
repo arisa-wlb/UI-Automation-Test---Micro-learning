@@ -33,3 +33,7 @@ test('Confirm Shipping สำเร็จ' , async ({ page }) => {
     });
 
 });
+
+test('Confirm Shipping ไม่สำเร็จ ไม่กรอก Shipping details ' , async ({ page }) => {
+    
+});
