@@ -10,5 +10,11 @@ test('Confirm Shipping สำเร็จ' , async ({ page }) => {
         await page.getByTestId('shipping-form-last-name').fill('Jaidee')
         await page.getByTestId('shipping-form-phone').fill('089-654-2124')
     });
+    await test.step('กรอกข้อมูลส่วน Address และตรวจสอบ Postal code' , async () => {
+        await page.getByTestId('shipping-form-address').fill('43/8 หมู่บ้านเปี่ยมสุข ถนนลาดพร้าว ซอย 63')
+        await page.getByTestId('shipping-form-province-select').selectOption({label : 'กรุงเทพมหานคร (Bangkok)'})
+        await page.getByTestId('shipping-form-district-select').selectOption({label : 'เขตวังทองหลาง (Khet Wang Thonglang)'})
+        await page.getByTestId('shipping-form-subdistrict-select').selectOption({label : 'วังทองหลาง (Wang Thonglang)'})
+    });
 
 });
