@@ -81,3 +81,22 @@ test('Login  ไม่สำเร็จ Email ไม่ถูกต้อง' ,
   
 });
 
+test('Login  ไม่สำเร็จ ไม่กรอก Email และ Password ' , async ({ page }) => {
+  await test.step('เข้าสู่หน้าเว็บไซต์' , async () => {
+    await page.goto('https://ui-sandbox-omega.vercel.app');
+  });
+
+  await test.step('ไปที่หน้า Login' , async () => {
+    await page.getByRole('link', { name: 'Login Form' }).click()
+  });
+
+  await test.step('กดปุ่ม Login' , async () => {
+    await page.getByTestId('login-btn').click()
+  });
+
+  await test.step('ตรวจสอบ error ใต้ช่องกรอก Email และ Password' , async () => {
+    await expect(page.getByTestId('email-error')).toHaveText('Please enter a valid email address.')
+    await expect(page.getByTestId('password-error')).toHaveText('Password is required.')
+  });
+  
+});
