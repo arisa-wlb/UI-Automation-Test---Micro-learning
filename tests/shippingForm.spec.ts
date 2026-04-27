@@ -20,4 +20,16 @@ test('Confirm Shipping สำเร็จ' , async ({ page }) => {
         await page.getByTestId('shipping-submit').click()
     });
 
+    await test.step('ตรวจสอบ URL และ ตรวจสอบ shipping details ที่หน้า Shipping confirmed' , async () => {
+        await expect(page).toHaveURL('https://ui-sandbox-omega.vercel.app/shipping/success');
+        await expect(page.getByTestId('success-heading')).toHaveText('Shipping confirmed')
+        await expect(page.getByTestId('success-recipient')).toHaveText('Somchai Jaidee')
+        await expect(page.getByTestId('success-phone')).toHaveText('089-654-2124')
+        await expect(page.getByTestId('success-address')).toHaveText('43/8 หมู่บ้านเปี่ยมสุข ถนนลาดพร้าว ซอย 63')
+        await expect(page.getByTestId('success-subdistrict')).toHaveText('วังทองหลาง (Wang Thonglang)')
+        await expect(page.getByTestId('success-district')).toHaveText('เขตวังทองหลาง (Khet Wang Thonglang)')
+        await expect(page.getByTestId('success-province')).toHaveText('กรุงเทพมหานคร (Bangkok)')
+        await expect(page.getByTestId('success-postal-code')).toHaveText('10310')
+    });
+
 });
