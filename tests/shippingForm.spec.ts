@@ -16,5 +16,8 @@ test('Confirm Shipping สำเร็จ' , async ({ page }) => {
         await page.getByTestId('shipping-form-district-select').selectOption({label : 'เขตวังทองหลาง (Khet Wang Thonglang)'})
         await page.getByTestId('shipping-form-subdistrict-select').selectOption({label : 'วังทองหลาง (Wang Thonglang)'})
     });
+    await test.step('กดปุ่ม Confilm shiping' , async () => {
+        await page.getByTestId('shipping-submit').click()
+    });
 
 });
