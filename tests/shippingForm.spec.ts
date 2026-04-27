@@ -39,5 +39,7 @@ test('Confirm Shipping ไม่สำเร็จ ไม่กรอก Shippin
         await page.goto('https://ui-sandbox-omega.vercel.app');
         await page.getByRole('link', { name: 'Shipping Form' }).click()
     });
-
+    await test.step('กดปุ่ม Confilm shiping' , async () => {
+        await page.getByTestId('shipping-submit').click()
+    });
 });
