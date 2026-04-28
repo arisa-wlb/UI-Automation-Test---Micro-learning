@@ -1,7 +1,7 @@
 import { test, expect } from '@playwright/test';
 
 test('Confirm Shipping สำเร็จ' , async ({ page }) => {
-    await test.step('เข้าสู่หน้าเว็บไซต์' , async () => {
+  await test.step('เข้าสู่หน้าเว็บไซต์' , async () => {
     await page.goto('https://ui-sandbox-omega.vercel.app');
   });
 
@@ -80,7 +80,7 @@ test('Confirm Shipping สำเร็จ' , async ({ page }) => {
 });
 
 test('Confirm Shipping ไม่สำเร็จ ไม่กรอก Shipping details ' , async ({ page }) => {
-    await test.step('เข้าสู่หน้าเว็บไซต์' , async () => {
+  await test.step('เข้าสู่หน้าเว็บไซต์' , async () => {
     await page.goto('https://ui-sandbox-omega.vercel.app');
   });
 
