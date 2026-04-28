@@ -16,4 +16,9 @@ test('กรอกข้อมูล Payment และ Confirm Payment สำเ
     await page.getByTestId('slip-file-input').setInputFiles(imagePath);
   });
         
+  await test.step('ตรวจสอบรูปภาพ sample-slip.jpg preview ', async () => {
+    await expect(page.getByTestId('slip-image-preview')).toBeVisible();
+  });
+  
+
 });
