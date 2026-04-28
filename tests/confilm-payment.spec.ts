@@ -1,5 +1,5 @@
 import { test, expect } from '@playwright/test';
-
+import path from 'path';
 
 test('กรอกข้อมูล Payment และ Confirm Payment สำเร็จ', async ({ page }) => {
 
