@@ -10,5 +10,10 @@ test('กรอกข้อมูล Payment และ Confirm Payment สำเ
   await test.step('ไปหน้า Confirm Payment', async () => {        
     await page.getByRole('link', { name: 'Confirm Payment' }).click();      
   });
+
+  await test.step('อัปโหลดรูปภาพ sample-slip.jpg', async () => {
+    const imagePath = path.join(__dirname, '..', 'assets' , 'jpg' , 'sample-slip.jpg');
+    await page.getByTestId('slip-file-input').setInputFiles(imagePath);
+  });
         
 });
