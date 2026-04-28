@@ -19,6 +19,11 @@ test('กรอกข้อมูล Payment และ Confirm Payment สำเ
   await test.step('ตรวจสอบรูปภาพ sample-slip.jpg preview ', async () => {
     await expect(page.getByTestId('slip-image-preview')).toBeVisible();
   });
+
+  await test.step('ตรวจสอบปุ่ม Remove แสดงขึ้นมา', async () => {
+    await expect(page.getByTestId('slip-remove')).toBeVisible();
+  });
+
   
 
 });
