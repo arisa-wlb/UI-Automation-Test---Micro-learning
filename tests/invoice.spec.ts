@@ -71,6 +71,90 @@ await test.step('เข้าสู่หน้า Invoice', async () => {
   await test.step('ตรวจสอบ Heading เท่ากันกับ Submit Invoice Successful', async () => {
     await expect(page.getByTestId('success-heading')).toHaveText('Submit Invoice Successful')
   });
-  
+
 });
-   
+
+test('Receipt 2 รายการ - Submit สำเร็จ', async ({page}) => {
+
+  await test.step('เข้าสู่หน้า Invoice', async () => {
+    await page.goto('https://ui-sandbox-omega.vercel.app/invoice')
+  });
+  
+  await test.step('เลือก Document type เท่ากันกับ Receipt', async () => {
+    await page.getByTestId('invoice-type-select').selectOption({label: 'Receipt'})
+  });
+  
+  await test.step('กรอก Item 1 Name เท่ากันกับ C-Level Consulting', async () => {
+    await page.getByTestId('row-1-name').fill('C-Level Consulting')
+  });
+  
+  await test.step('เลือก Item 1 Category เท่ากันกับ Hardware', async () => {
+    await page.getByTestId('row-1-category').fill('Hard')
+    await page.getByRole('option', { name: 'Hardware' }).click()
+  });
+  
+  await test.step('กรอก Item 1 Unit Price เท่ากันกับ 2000', async () => {
+    await page.getByTestId('row-1-unit-price').fill('2000')
+  });
+  
+  await test.step('กรอก Item 1 Qty เท่ากันกับ 4', async () => {
+    await page.getByTestId('row-1-qty').clear()
+    await page.getByTestId('row-1-qty').fill('4')
+    await page.locator('body').click()
+  });
+  
+  await test.step('ตรวจสอบ Item 1 Total Price เท่ากันกับ 8,000.00', async () => {
+    await expect(page.getByTestId('row-1-total')).toHaveValue('8,000.00')
+  });
+  
+  await test.step('เพิ่ม Item 2', async () => {
+    await page.getByTestId('add-row-button').click()
+  });
+  
+  await test.step('กรอก Item 2 Name เท่ากันกับ E2E Automation Test via APIs', async () => {
+    await page.getByTestId('row-2-name').fill('E2E Automation Test via APIs')
+  });
+  
+  await test.step('เลือก Item 2 Category เท่ากันกับ Maintenance', async () => {
+    await page.getByTestId('row-2-category').fill('Mai')
+    await page.getByRole('option', { name: 'Maintenance' }).click()
+  });
+  
+  await test.step('กรอก Item 2 Unit Price เท่ากันกับ 10,000.00', async () => {
+    await page.getByTestId('row-2-unit-price').fill('10,000.00')
+    });
+  
+  await test.step('กรอก Item 2 Qty เท่ากันกับ 1', async () => {
+    await page.getByTestId('row-2-qty').clear()
+    await page.getByTestId('row-2-qty').fill('1')
+    await page.locator('body').click()
+  });
+  
+  await test.step('ตรวจสอบ Item 2 Total Price เท่ากันกับ 10,000.00', async () => {
+    await expect(page.getByTestId('row-2-total')).toHaveValue('10,000.00')
+  });
+  
+  await test.step('ตรวจสอบ Subtotal เท่ากันกับ 16,740.00', async () => {
+    await expect(page.getByTestId('summary-subtotal')).toHaveText('16,740.00')
+  });
+  
+  await test.step('ตรวจสอบ VAT เท่ากันกับ 1,260.00', async () => {
+    await expect(page.getByTestId('summary-vat')).toHaveText('1,260.00')
+  });
+  
+  await test.step('ตรวจสอบ Grand Total เท่ากันกับ 18,000.00', async () => {
+    await expect(page.getByTestId('summary-grand-total')).toHaveText('18,000.00')
+  });
+  
+  await test.step('กดปุ่ม Submit', async () => {
+    await page.getByTestId('submit-button').click()
+  });
+  
+  await test.step('ตรวจสอบ URL เท่ากันกับ /invoice/success', async () => {
+    await expect(page).toHaveURL('https://ui-sandbox-omega.vercel.app/invoice/success');
+  });
+  
+  await test.step('ตรวจสอบ Heading เท่ากันกับ Submit Invoice Successful', async () => {
+    await expect(page.getByTestId('success-heading')).toHaveText('Submit Invoice Successful')
+  });
+});
