@@ -2,8 +2,8 @@ import { test, expect } from "@playwright/test";
 
 test('Tax Invoice 1 รายการ - แก้ไขราคาและจำนวน แล้ว Submit สำเร็จ', async ({page}) => {
    
-await test.step('เข้าสู่หน้า Invoice', async () => {
-  await page.goto('https://ui-sandbox-omega.vercel.app/invoice')
+  await test.step('เข้าสู่หน้า Invoice', async () => {
+    await page.goto('https://ui-sandbox-omega.vercel.app/invoice')
   });
    
   await test.step('เลือก Document type เท่ากันกับ Tax Invoice', async () => {
