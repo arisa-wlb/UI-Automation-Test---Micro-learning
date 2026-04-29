@@ -39,9 +39,13 @@ test('กรอกข้อมูล Payment และ Confirm Payment สำเ
   await test.step('กรอก Transaction Time เท่ากันกับ 1510', async () => {
     await page.getByTestId('transaction-time').fill('1510');
   });
-  
+
   await test.step('กดปุ่ม Confirm Payment', async () => {
     await page.getByTestId('payment-submit').click();
+  });
+
+  await test.step('ตรวจสอบ URL เท่ากันกับ /payment/success', async () => {
+    await expect(page).toHaveURL('https://ui-sandbox-omega.vercel.app/payment/success');
   });
 
 });
