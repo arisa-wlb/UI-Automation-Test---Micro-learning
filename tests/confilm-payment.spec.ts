@@ -48,4 +48,8 @@ test('กรอกข้อมูล Payment และ Confirm Payment สำเ
     await expect(page).toHaveURL('https://ui-sandbox-omega.vercel.app/payment/success');
   });
 
+  await test.step('ตรวจสอบรูปภาพ Slip Preview แสดงขึ้นมา', async () => {
+    await expect(page.getByTestId('success-slip-preview')).toBeVisible();
+  });
+
 });
