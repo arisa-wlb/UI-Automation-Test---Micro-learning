@@ -26,6 +26,10 @@ test('กรอกข้อมูล Payment และ Confirm Payment สำเ
 
   await test.step('กรอก Order ID เท่ากันกับ 6117011612040', async () => {
     await page.getByTestId('order-id').fill('6117011612040');
-  });  
+  });
+  
+  await test.step('กรอก Amount เท่ากันกับ 10,000', async () => {
+    await page.getByTestId('payment-amount').fill('10,000');
+  });
 
 });
