@@ -40,5 +40,8 @@ test('กรอกข้อมูล Payment และ Confirm Payment สำเ
     await page.getByTestId('transaction-time').fill('1510');
   });
   
+  await test.step('กดปุ่ม Confirm Payment', async () => {
+    await page.getByTestId('payment-submit').click();
+  });
 
 });
