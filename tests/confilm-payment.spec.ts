@@ -4,7 +4,7 @@ import path from 'path';
 test('กรอกข้อมูล Payment และ Confirm Payment สำเร็จ', async ({ page }) => {
 
   await test.step('เข้าสู่หน้าเว็บไซต์', async () => {
-    await page.goto('https://ui-sandbox-omega.vercel.app');
+    await page.goto('/');
   });
 
   await test.step('ไปหน้า Confirm Payment', async () => {        
@@ -24,6 +24,8 @@ test('กรอกข้อมูล Payment และ Confirm Payment สำเ
     await expect(page.getByTestId('slip-remove')).toBeVisible();
   });
 
-  
+  await test.step('กรอก Order ID เท่ากันกับ 6117011612040', async () => {
+    await page.getByTestId('order-id').fill('6117011612040');
+  });  
 
 });
