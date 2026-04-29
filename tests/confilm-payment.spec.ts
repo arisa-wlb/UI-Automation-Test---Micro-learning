@@ -36,4 +36,9 @@ test('กรอกข้อมูล Payment และ Confirm Payment สำเ
     await page.getByTestId('transaction-date').fill('2026-04-24');
   });
 
+  await test.step('กรอก Transaction Time เท่ากันกับ 1510', async () => {
+    await page.getByTestId('transaction-time').fill('1510');
+  });
+  
+
 });
