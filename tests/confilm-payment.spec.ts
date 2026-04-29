@@ -1,7 +1,7 @@
 import { test, expect } from '@playwright/test';
 import path from 'path';
 
-test('กรอกข้อมูล Payment และ Confirm Payment สำเร็จ', async ({ page }) => {
+test('กรอกข้อมูล Payment แนบ slip ด้วยนามสุกลไฟล์ .jpg และ Confirm Payment สำเร็จ', async ({ page }) => {
 
   await test.step('เข้าสู่หน้าเว็บไซต์', async () => {
     await page.goto('/');
@@ -73,3 +73,6 @@ test('กรอกข้อมูล Payment และ Confirm Payment สำเ
   }); 
 
 });
+
+
+
