@@ -52,4 +52,8 @@ test('กรอกข้อมูล Payment และ Confirm Payment สำเ
     await expect(page.getByTestId('success-slip-preview')).toBeVisible();
   });
 
+  await test.step('ตรวจสอบ Order ID เท่ากันกับ 6117011612040', async () => {
+    await expect(page.getByTestId('success-order-id')).toHaveText('6117011612040');
+  });
+
 });
