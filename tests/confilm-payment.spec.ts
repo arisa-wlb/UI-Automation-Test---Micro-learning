@@ -56,4 +56,20 @@ test('กรอกข้อมูล Payment และ Confirm Payment สำเ
     await expect(page.getByTestId('success-order-id')).toHaveText('6117011612040');
   });
 
+  await test.step('ตรวจสอบ Amount เท่ากันกับ ฿ 10,000.00', async () => {
+    await expect(page.getByTestId('success-amount')).toHaveText('฿ 10,000.00');
+  });
+  
+  await test.step('ตรวจสอบ Date เท่ากันกับ 24/04/2026', async () => {
+    await expect(page.getByTestId('success-date')).toHaveText('24/04/2026');
+  });
+  
+  await test.step('ตรวจสอบ Time เท่ากันกับ 15:10', async () => {
+    await expect(page.getByTestId('success-time')).toHaveText('15:10');
+  });
+  
+  await test.step('ตรวจสอบ Filename เท่ากันกับ sample-slip.jpg', async () => {
+    await expect(page.getByTestId('success-filename')).toHaveText('sample-slip.jpg');
+  }); 
+
 });
